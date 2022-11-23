@@ -16,7 +16,7 @@ def RHRectangle(a,b,n):
     width  = (b-a)/n
     area = 0
 
-    for i in range(1,n): # Skip first point
+    for i in range(n): # Skip first point
         area += width * f(b-i*width)
 
     return area
