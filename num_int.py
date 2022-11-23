@@ -32,13 +32,13 @@ def trapRule(a,b,n):
 
 def simpsonsRule(a,b,n):
     width = (b-a)/n
-    area = 0
+    area = f(a) + f(b) # First and last endpoints have weight 1
     mult = 1
 
-    for i in range(n+1): # Include right endpoint 
+    for i in range(1,n):
         if i % 2 == 0:
-            mult = 1
-        elif i % 2 == 1:
+            mult = 2
+        else:
             mult = 4
         area += mult * f(a+i*width)
 
@@ -64,18 +64,20 @@ I10 = trapRule(0,1,10)
 I20 = trapRule(0,1,20)
 print('trapezoid (n=10):',I10)
 print('trapezoid (n=20):',I20)
+print('2I20-I10:',2*I20-I10)
 print('(4I20-I10)/3:',(4*I20-I10)/3,'\n')
 
 I10 = simpsonsRule(0,1,10)
 I20 = simpsonsRule(0,1,20)
 print('Simpson\'s (n=10):',I10)
 print('Simpson\'s (n=20):',I20)
+print('(16I20-I10)/15',(16*I20-I10)/15)
 
-# We assume that for some k that (2^k * I20-I10)/(2^k-1) ~= .25
-# Brute force attempt
-
+# Brute force through all powers of two
 two_pow = 2
-for k in range(50): # sufficiently large number 
-    val = (two_pow*I20-I10)/(two_pow-1)
-    # print('(k='+str(k)+'):',val)
+BIG_NUM = 15
+
+for i in range(BIG_NUM):
+    diff = (two_pow*I20-I10)/(two_pow-1)
+    print([i,diff])
     two_pow <<= 1
