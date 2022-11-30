@@ -79,5 +79,5 @@ BIG_NUM = 15
 
 for i in range(BIG_NUM):
     diff = (two_pow*I20-I10)/(two_pow-1)
-    print([i,diff])
+    # print([i,diff])
     two_pow <<= 1
