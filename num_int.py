@@ -73,11 +73,3 @@ print('Simpson\'s (n=10):',I10)
 print('Simpson\'s (n=20):',I20)
 print('(16I20-I10)/15',(16*I20-I10)/15)
 
-# Brute force through all powers of two
-two_pow = 2
-BIG_NUM = 15
-
-for i in range(BIG_NUM):
-    diff = (two_pow*I20-I10)/(two_pow-1)
-    # print([i,diff])
-    two_pow <<= 1
